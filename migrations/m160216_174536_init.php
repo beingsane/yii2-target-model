@@ -1,7 +1,7 @@
 <?php
 
 use yii\db\Migration;
-use yiister\tm\models\TargetModel;
+use yiister\tm\TargetModel;
 
 class m160216_174536_init extends Migration
 {
@@ -11,7 +11,7 @@ class m160216_174536_init extends Migration
             TargetModel::tableName(),
             [
                 'id' => $this->primaryKey(),
-                'name' => $this->string(255)->notNull(),
+                'name' => $this->string(50)->notNull(),
                 'class_name' => $this->string(255)->notNull(),
             ],
             'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB'

@@ -1,6 +1,6 @@
 <?php
 
-namespace yiister\tm\models;
+namespace yiister\tm;
 
 use Yii;
 use yii\db\ActiveRecord;
@@ -33,7 +33,11 @@ class TargetModel extends \yii\db\ActiveRecord
         if ($this->generatedRules === null) {
             $this->generatedRules = [
                 [['name', 'class_name'], 'required'],
-                [['name', 'class_name'], 'string', 'max' => 255],
+                [['name'], 'string', 'max' => 50],
+                [['class_name'], 'string', 'max' => 255],
+                [['class_name'], 'filter', 'filter' => function($value) {
+                    return ltrim($value, '\\');
+                }],
             ];
             $safeAttributes = [];
             foreach ($this->getTableSchema()->columns as $column) {
