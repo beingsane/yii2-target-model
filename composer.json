@@ -1,6 +1,6 @@
 {
   "name": "yiister/yii2-target-model",
-  "description": "",
+  "description": "yii2-target-model is extension for yii framework 2 allows to get custom information for ActiveRecord. It is used in some other extensions.",
   "keywords": [
     "yii2",
     "utils",
