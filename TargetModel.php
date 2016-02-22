@@ -14,9 +14,12 @@ use yii\db\ActiveRecord;
  */
 class TargetModel extends \yii\db\ActiveRecord
 {
+    /** @var array of TargetModel attributes */
     protected static $identityMap = [];
 
+    /** @var array of validator rules */
     protected $generatedRules;
+
     /**
      * @inheritdoc
      */
@@ -64,12 +67,11 @@ class TargetModel extends \yii\db\ActiveRecord
     /**
      * Create a new TargetModel.
      * @param string $className
-     * @param string | null $name
-     * @param array $attributes
+     * @param string $name
      * @return static
      * @throws \Exception
      */
-    public static function createModel($className, $name = null, $attributes = [])
+    public static function createModel($className, $name = null)
     {
         $targetModel = new static;
         $targetModel->class_name = $className;
@@ -81,8 +83,8 @@ class TargetModel extends \yii\db\ActiveRecord
     }
 
     /**
-     * Get TargetModel as array by className.
-     * @param string |ActiveRecord $className
+     * Get a TargetModel as array by className.
+     * @param string | ActiveRecord $className
      * @return array
      * @throws \Exception
      */
