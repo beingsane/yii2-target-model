@@ -35,9 +35,6 @@ class TargetModel extends \yii\db\ActiveRecord
                 [['name', 'class_name'], 'required'],
                 [['name'], 'string', 'max' => 50],
                 [['class_name'], 'string', 'max' => 255],
-                [['class_name'], 'filter', 'filter' => function($value) {
-                    return ltrim($value, '\\');
-                }],
             ];
             $safeAttributes = [];
             foreach ($this->getTableSchema()->columns as $column) {
@@ -94,6 +91,7 @@ class TargetModel extends \yii\db\ActiveRecord
         if (is_object($className) === true) {
             $className = get_class($className);
         }
+        $className = ltrim($className, '\\');
         if (isset(static::$identityMap[$className]) === false) {
             static::$identityMap[$className] = static::find()
                 ->asArray(true)
