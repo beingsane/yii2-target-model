@@ -74,6 +74,7 @@ class TargetModel extends \yii\db\ActiveRecord
     public static function createModel($className, $name = null)
     {
         $targetModel = new static;
+        $targetModel->loadDefaultValues();
         $targetModel->class_name = $className;
         $targetModel->name = $name !== null ? $name : (new \ReflectionClass($className))->getShortName();
         if ($targetModel->save() === false) {
